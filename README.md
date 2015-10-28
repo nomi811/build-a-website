@@ -6,7 +6,7 @@ Follow these instructions to create a "cover letter" website as part of your app
 
 2) Create a new public c9 workspace (custom)
 
-[custom workspace form](https://www.dropbox.com/s/qpczlcyv0ar1s2o/Screenshot%202015-10-28%2015.37.15.png?dl=1)
+![custom workspace form](https://www.dropbox.com/s/qpczlcyv0ar1s2o/Screenshot%202015-10-28%2015.37.15.png?dl=1)
 
 3) Set up bundle
 
