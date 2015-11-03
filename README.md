@@ -33,7 +33,7 @@ When your workspace has been created, you should see it open in your browser.  I
 
 ![Cloud9 interface](/images/cloud9_intro.jpg)
 
-This is what is known in the business as an **Integrated Development Environment** (IDE).  IDEs are highly complex applications and take a bit of getting used to.  Think Microsoft Word, on steroids, exposed to radiation in a secret nuclear incident and gaining super powers.  Something like that.  Anyway, the important thing is, Cloud9 gives us the four critical components of our development environment:
+This is what is known in the business as an **Integrated Development Environment** (**IDE**).  IDEs are highly complex applications and take a bit of getting used to.  Think Microsoft Word, on steroids, exposed to radiation in a secret nuclear incident and having gained super powers.  Something like that.  Anyway, the important thing is, Cloud9 gives us the four critical components of our development environment:
 
 * A **file system** to store our source files (code, images, HTML, CSS and so on),
 * an **editor** to edit our source files,
@@ -41,7 +41,7 @@ This is what is known in the business as an **Integrated Development Environment
 * and a **command line** - or **terminal** - to send instructions to the operating system.
 
 ### Step 0.1: Update the README
-You'll notice that a single file has been created for you already - `README.md`.  It's a convention of all good projects to have a README file that explains what the project is for and information about how to install and run the program.
+You'll notice that a single file has been created for you already - `README.md`.  It's a convention of all good projects to have a README file that explains what the project is for and provides information about how to install and run the program.
 
 If you double click the file in the tree view, it will open for editing in the main pane.  The file has a `.md` extension, which means it is intended to be written in **Markdown**, a popular syntax for lightly styling text files.  Markdown is ubiquitous on **GitHub** [and here is a useful guide](https://guides.github.com/features/mastering-markdown/).  For now though, let's just create a basic placeholder for information.  Delete the contents of the file and replace with the following:
 
@@ -56,7 +56,7 @@ Make sure you save the file.  Switch to the preview tab: has it been updated wit
 ### Step 0.2: Hello Ruby
 Ruby is a programming language. It comes pre-installed on your Cloud9 workspace. To test this, go to the command line and type:
 
-```sh
+```
 ruby -v
 ```
 
@@ -90,10 +90,10 @@ This tells the Ruby engine to run the code in `hello.rb`.  You should see the fo
 Hello Ruby
 ```
 
-You've just written a command-line program: you run it from the command line and it outputs to the command line.
+You've just written a command-line program: you run it from the command line and it outputs to the command line!
 
 ## Step 1: Hello World (...Wide Web)
-A website is a program that receives requests and sends responses over the Internet.  But that's a lot easier said than done.  Fortunately, it's also so utterly fundamental that the heavy lifting is already taken care of by something else; something we call a **web framework**.  Most programming languages have a number of web frameworks to choose from and Ruby is no exception.  We are going to use a framework called [Sinatra](http://www.sinatrarb.com/).
+A website is a program that receives requests and sends responses over the Internet.  But that's a lot easier said than done.  Fortunately, it's also so utterly fundamental that the heavy lifting is already done for us by something else; something we call a **web framework**.  Most programming languages have a number of web frameworks to choose from and Ruby is no exception.  We are going to use a framework called [Sinatra](http://www.sinatrarb.com/).
 
 ### Creating the server
 Create a file in your workspace called `server.rb`.
@@ -123,9 +123,9 @@ You should get an error:
 
 That was just to get you warmed up!  Error messages often look unfriendly, but they're really rather useful when you get to know them.  What does this one mean?
 
-If you throw your hands up in the air and exclaim 'How the devil should I know?', then don't worry.  That's how we all feel sometimes.  One of the skills of a good developer is to make and test small hypotheses about the cause of an error message, then iterate over that process until the solution is found.  Oh, and Google.  You can always just Google it.
+If you throw your hands up in the air and exclaim 'How the devil should I know?', then don't worry.  That's how we all feel sometimes.  One of the skills of a good developer is to make and test small hypotheses about the cause of an error message, then iterate over that process until the solution is found.  Oh, and Google it.  You can always just Google it.
 
-But don't spend too long disappearing down that rabbit hole, you might never make it back.  The answer is actually simpler than you might infer from some of the answers on Google.  Sinatra is actually just another Ruby program; but it's not yet installed in our workspace.  To install Sinatra, enter the following on the command line:
+But don't spend too long climbing down that rabbit hole, you might never make it back.  The answer here is actually much simpler than you might infer from some of the answers on Google.  Sinatra is just another Ruby program; but it's not yet installed in our workspace.  To install Sinatra, enter the following on the command line:
 
 ```
 gem install sinatra
@@ -141,6 +141,6 @@ ruby server.rb -p $PORT -o $IP
 
 Don't worry about what the `-p $PORT -o $IP` bit means at this stage - it's just something Cloud9 requires.  Your program should now be running and sending output to the command line.  Cloud9 should also have opened a browser tab with the URL of your website, similar to `https://motivational-posters-[YOUR USERNAME].c9.io/`.  That's a real, live URL: try opening it from another window, or from your phone.  Cool huh?
 
->  Note:  If you made your workspace private instead of public, you'll have to sign in to visit the URL on another browser.
+>  If you made your workspace private instead of public, you'll have to sign in to visit the URL on another browser.
 
 To stop the program running, press Ctrl+C in the command window.
