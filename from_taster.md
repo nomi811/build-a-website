@@ -1,6 +1,7 @@
 
 
 
+
 ### Adding some Javascript
 
 Javascript is the programming language that the browser uses. While Ruby is used by your computer (what you run in the Terminal), Javascript is run by your browser right inside of the web page, so you can use it to add dynamic behaviour to your pages.
