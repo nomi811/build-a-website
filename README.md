@@ -1,4 +1,4 @@
-# Build a website with Ruby
+# Build a website with Ruby and JavaScript
 
 ## Why am I doing this?
 You can already get a pretty long way building a website using just HTML & CSS.  Or perhaps instead using the myriad blogging engines and 'build a website' services that exist.  So why bother with Ruby?
