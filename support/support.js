@@ -27,13 +27,13 @@ function searchCompleteCallback(search, options) {
 function saveParametersToHash() {
   $('input, select').change(function() {
     var hash = {};
-    hash.caption = $("#text").val();
-    hash.size = $('#size').val();
-    hash.left = $('#left').val();
-    hash.top = $('#top').val();
-    hash.width = $('#width').val();
-    hash.colour = $('#colour').val();
-    hash.align = $('#align').val();
+    hash.caption = $("#caption-text").val();
+    hash.size = $('#caption-size').val();
+    hash.left = $('#caption-left').val();
+    hash.top = $('#caption-top').val();
+    hash.width = $('#caption-width').val();
+    hash.colour = $('#caption-colour').val();
+    hash.align = $('#caption-align').val();
     hash.url = $('#workspace img').attr("src");
     hash.keyword = $('#search-term').val();
     window.location.hash = escape(JSON.stringify(hash));
@@ -44,13 +44,13 @@ function saveParametersToHash() {
 function loadParametersFromHash() {
   try {
     var hash = JSON.parse(unescape(window.location.hash).replace('#', ''));
-    $('#text').val(hash.caption);
-    $('#size').val(hash.size);
-    $('#left').val(hash.left);
-    $('#top').val(hash.top);
-    $('#width').val(hash.width);
-    $('#colour').val(hash.colour);
-    $('#align').val(hash.align);
+    $('#caption-text').val(hash.caption);
+    $('#caption-size').val(hash.size);
+    $('#caption-left').val(hash.left);
+    $('#caption-top').val(hash.top);
+    $('#caption-width').val(hash.width);
+    $('#caption-colour').val(hash.colour);
+    $('#caption-align').val(hash.align);
     $('input, select').trigger('change');
     $('#workspace').append($('<img>').attr("src", hash.url));
     $('#search-term').val(hash.keyword);
@@ -75,5 +75,7 @@ function updateTweetButton() {
 $(function() {
   loadParametersFromHash();
   saveParametersToHash();
-  $('#text').trigger("input");
+  $('#caption-text').trigger("input");
 })
+
+https://motivational-posters-silvabox.c9.io/#%7B%22caption%22%3A%22Does%20this%20blow%20the%20Twitter%20character%20limit%3F%22%2C%22size%22%3A%2232%22%2C%22left%22%3A%2210%22%2C%22top%22%3A%2210%22%2C%22width%22%3A%22400%22%2C%22colour%22%3A%22yellow%22%2C%22align%22%3A%22left%22%2C%22url%22%3A%22http%3A//th06.deviantart.net/fs71/PRE/f/2012/192/3/d/fire_breathing_dragon_by_sandara-d56vmyu.jpg%22%2C%22keyword%22%3A%22dragon%22%7D
