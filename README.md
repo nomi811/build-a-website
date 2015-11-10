@@ -1,82 +1,20 @@
-# Cover Letter Site
+# Build a website with Ruby and JavaScript
 
-Follow these instructions to create a "cover letter" website as part of your application to Makers Academy. 
+## Why am I doing this?
+You can already get a pretty long way building a website using just HTML & CSS.  Or perhaps instead using the myriad blogging engines and 'build a website' services that exist.  So why bother with Ruby?
 
-1) Create a free account with c9 https://c9.io/web/sign-up/free
+The truth is, being a web developer is not really about HTML and CSS.  Those are only a small part of the very broad range of skills and languages that a good developer needs to have.  Plus, only a proportion of web development actually happens on the web.  For the most part, developers work with code in 'development environments' on their local machines; very far from all the bells and whistles.
 
-2) Create a new public c9 workspace (custom)
+Being a web developer is about leveraging a whole range of technologies and languages, often at quite low levels and being confident to dive in and learn something new - and potentially complicated - even if it's initially bewildering.
 
-![custom workspace form](https://www.dropbox.com/s/qpczlcyv0ar1s2o/Screenshot%202015-10-28%2015.37.15.png?dl=1)
+And that's what this project is for: to give you a peek under the hood and hopefully - depending on your experience - challenge you to get a bit out of your depth.
 
-3) Set up bundle
+So, let's begin.
 
-```
-$ bundle init
-```
+## How to follow this guide
+There are no intentional tricks or traps in this guide.  If you follow the instructions correctly, you should finish with a fully-working website that can be deployed to the world.  If you get stuck, read [what to do if you get stuck]('#what-to-do-if-you-get-stuck').  There are only two rules:
 
-4) Edit Gemfile to include sinatra gem (make sure to save)
+* **Type every line of code yourself**.  While it's tempting to copy and paste code from this guide, you won't learn anything if you do.
+* **You don't need to understand everything**.  Of course, 'understanding' is a vital part of being a developer; but so is managing how much you need to know.  It isn't possible to understand everything.
 
-```ruby
-# A sample Gemfile
-source "https://rubygems.org"
-
-gem "sinatra"
-
-```
-
-5) run bundle to pull in sinatra library
-
-```
-$ bundle
-```
-
-6) create server.rb
-
-```ruby
-require 'sinatra'
-
-get '/' do
-    'hello world'
-end
-```
-
-7) run the server
-
-```
-$ ruby server.rb -p $PORT -o $IP
-```
-
-8) Check out your local 'hello world' page on c9, e.g. 
-
-https://makers-resume-tansaku-1.c9.io
-
-9) Push to Heroku for permanent display:
-
-i) create a config.ru
-
-```ruby
-require './server'
-run Sinatra::Application
-```
-
-ii) get all files into git:
-
-```
-$ git init
-$ git add .
-$ git commit -m  'initial hello world' 
-```
-
-iii) create heroku instance (inc. sign up for heroku)
-
-```
-$ heroku create
-```
-
-iv) push to heroku
-
-```
-$ git push heroku master
-```
-
-v) open app, e.g. https://arcane-tor-5901.herokuapp.com/
+[Begin with Step 0](/steps/0.md)
