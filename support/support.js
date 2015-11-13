@@ -5,12 +5,12 @@ function findImagesOnGoogle(options) {
   options.container.append($("<p>").text("Searching..."));
 
   var imageSearch = new google.search.ImageSearch();
-  imageSearch.setSearchCompleteCallback(this, searchCompleteCallback(imageSearch, options), null);
+  imageSearch.setSearchCompleteCallback(this, createSearchCompleteCallback(imageSearch, options), null);
   imageSearch.setResultSetSize(8);
   imageSearch.execute(options.keywords);
-}
+};
 
-function searchCompleteCallback(search, options) {
+function createSearchCompleteCallback(search, options) {
   return function(arg) {
     google.search.Search.getBranding('google-branding');
     options.container.empty();
@@ -22,7 +22,7 @@ function searchCompleteCallback(search, options) {
       options.container.append(img);
     }
   }
-}
+};
 
 function saveParametersToHash() {
   $('input, select').change(function() {
@@ -39,7 +39,7 @@ function saveParametersToHash() {
     window.location.hash = escape(JSON.stringify(hash));
     updateTweetButton();
   });
-}
+};
 
 function loadParametersFromHash() {
   try {
@@ -55,7 +55,7 @@ function loadParametersFromHash() {
     $('#workspace').append($('<img>').attr("src", hash.url));
     $('#search-term').val(hash.keyword);
   } catch (err) {}
-}
+};
 
 function updateTweetButton() {
   if (typeof twttr == 'undefined') {
@@ -63,19 +63,16 @@ function updateTweetButton() {
   }
   $('#twitter').empty();
   var a = $('<a>')
-            // .attr("data-url", window.location.href)
             .attr("href", "https://twitter.com/share")
             .addClass("twitter-share-button")
-            .attr("data-text", "I built Motivational Posters page @makersacademy today!")
+            .attr("data-text", "Today I finished building a 'Motivational Posters' website with @makersacademy!")
             .append($("Tweet"));
   a.appendTo('#twitter');
   twttr.widgets.load();
-}
+};
 
 $(function() {
   loadParametersFromHash();
   saveParametersToHash();
   $('#caption-text').trigger("input");
-})
-
-https://motivational-posters-silvabox.c9.io/#%7B%22caption%22%3A%22Does%20this%20blow%20the%20Twitter%20character%20limit%3F%22%2C%22size%22%3A%2232%22%2C%22left%22%3A%2210%22%2C%22top%22%3A%2210%22%2C%22width%22%3A%22400%22%2C%22colour%22%3A%22yellow%22%2C%22align%22%3A%22left%22%2C%22url%22%3A%22http%3A//th06.deviantart.net/fs71/PRE/f/2012/192/3/d/fire_breathing_dragon_by_sandara-d56vmyu.jpg%22%2C%22keyword%22%3A%22dragon%22%7D
+});
