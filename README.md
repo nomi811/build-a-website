@@ -18,3 +18,8 @@ There are no intentional tricks or traps in this guide.  If you follow the instr
 * **You don't need to understand everything**.  Of course, 'understanding' is a vital part of being a developer; but so is managing how much you need to know.  It isn't possible to understand everything.
 
 [Begin with Step 0](/steps/0.md)
+
+## What to do if you get stuck
+Getting stuck sucks.  Especially when you're just getting started and things don't work!
+
+But don't worry - getting stuck is an inevitable part of being a developer and getting unstuck is a critical skill.  If you are not getting the results you expect, try the following steps:
