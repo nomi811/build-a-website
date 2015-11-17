@@ -12,7 +12,7 @@ And that's what this project is for: to give you a peek under the hood and hopef
 So, let's begin.
 
 ## How to follow this guide
-There are no intentional tricks or traps in this guide.  If you follow the instructions correctly, you should finish with a fully-working website that can be deployed to the world.  If you get stuck, read [what to do if you get stuck]('#what-to-do-if-you-get-stuck').  There are only two rules:
+There are no intentional tricks or traps in this guide.  If you follow the instructions correctly, you should finish with a fully-working website that can be deployed to the world.  If you get stuck, read [what to do if you get stuck](#what-to-do-if-you-get-stuck).  There are only two rules:
 
 * **Type every line of code yourself**.  While it's tempting to copy and paste code from this guide, you won't learn anything if you do.
 * **You don't need to understand everything**.  Of course, 'understanding' is a vital part of being a developer; but so is managing how much you need to know.  It isn't possible to understand everything.
