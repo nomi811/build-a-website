@@ -23,3 +23,19 @@ There are no intentional tricks or traps in this guide.  If you follow the instr
 Getting stuck sucks.  Especially when you're just getting started and things don't work!
 
 But don't worry - getting stuck is an inevitable part of being a developer and getting unstuck is a critical skill.  If you are not getting the results you expect, try the following steps:
+
+1. Try to gather some words about the problem, even in vague terms. "It's broken" is not a problem description.
+
+2. Pair Partner. Bounce off them, discuss, and rubber-duck debug. Imagine you are seeing the problem for the first time, together.
+
+3. Isolate Keywords. Gather a small group of keywords that describe the problem area, like Array, ‘Websockets’, or ‘Terminal’.
+
+4. Isolate Error Keywords. If you have an error message, identify and add these keywords to your results from 3).
+
+5. Google. Research the problem using your keywords. Also use the keywords to identify relevant results (i.e. not just the first one).
+
+6. Stack Overflow. Format your question well. Expect formatting feedback on your query from coaches, and support from Alumni Helpers or fellow students/graduates. If you're struggling to create a post, grab an Alumni Helper to help out.
+
+7. Alumni Helper. Take your well-formatted Slack/Stack Overflow problem to an Alumni Helper for one-to-one guidance.
+
+8. Coach. If all else fails, get some 1-1 support. Don't be disappointed if the answer comes as more questions.
