@@ -17,7 +17,7 @@ Roi
 
 ## Setting Up Your Dev Environment
 
-* [Prepare to Code]([http://www.preparetocode.io](http://www.preparetocode.io/)-
+* [Prepare to Code](http://www.preparetocode.io/)-
   this guide includes all the steps you might need to set up your Mac to become
 a Ruby Dev. Make sure you install the technologies in order, from right to left.
 A quick summary of the tech you will be installing:
