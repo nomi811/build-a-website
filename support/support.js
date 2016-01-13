@@ -1,25 +1,27 @@
-google.load("search", "1");
+var findImagesOnGoogle = (function() {
+  var data = {
+    cx: '014198152100153733400:27vlrogsbsm',
+    key: 'AIzaSyA5qyZaNoT1V14PGwJUjCDW2qwE7krEduc',
+    searchType: 'image'
+  };
 
-function findImagesOnGoogle(options) {
-  options.container.empty();
-  options.container.append($("<p>").text("Searching..."));
+  var searchUrl = 'https://www.googleapis.com/customsearch/v1';
 
-  var imageSearch = new google.search.ImageSearch();
-  imageSearch.setSearchCompleteCallback(this, createSearchCompleteCallback(imageSearch, options), null);
-  imageSearch.setResultSetSize(8);
-  imageSearch.execute(options.keywords);
-};
+  return function(options) {
+    data.q = options.term;
+    $.get(searchUrl, data, createSearchCompleteCallback(options.resultsContainer))
+  }
+})();
 
-function createSearchCompleteCallback(search, options) {
-  return function(arg) {
-    google.search.Search.getBranding('google-branding');
-    options.container.empty();
-    for (var i = 0; i < search.results.length; i++) {
-      var result = search.results[i];
+function createSearchCompleteCallback(container) {
+  return function(search) {
+    container.empty();
+    for (var i = 0; i < search.items.length; i++) {
+      var result = search.items[i];
       var img = $("<img>");
-      img.attr('src', result.tbUrl);
-      img.data('url', result.url);
-      options.container.append(img);
+      img.attr('src', result.image.thumbnailLink);
+      img.data('url', result.link);
+      container.append(img);
     }
   }
 };
