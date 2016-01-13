@@ -1,0 +1,555 @@
+%h1
+  %a#user-content-making-things-happen-with-javascript.anchor{"aria-hidden" => "true", :href => "#making-things-happen-with-javascript"}>
+    %span.octicon.octicon-link
+  Making things happen with JavaScript
+%p
+  Our website doesn't do very much yet.  We're going to change that now using JavaScript.  JavaScript is not just another programming language; it is unique because - currently - it is the only language
+  = succeed "." do
+    %em that can run in the browser
+%p If you think that sounds potentially dangerous, you are right.  A large number of Internet security vulnerabilities involve JavaScript.  However, without JavaScript, the web would be a much duller place.
+%p
+  We'll be using two external JavaScrpt libraries:
+  %a{:href => "https://jquery.com/"} jQuery
+  and
+  %a{:href => "https://developers.google.com/image-search/?hl=en"} Google Image Search
+  (which is actually no longer supported, but it still works).
+%p
+  We need to tell our page to load these two JavaScript libraries from somewhere.  Fortunately, they can be loaded directly across the Internet.  Add the following two lines to the
+  %code &lt;head&gt;
+  element of your
+  = succeed ":" do
+    %code index.erb
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent script
+    = succeed "=" do
+      %span.pl-e src
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        https://www.google.com/jsapi
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent script
+    %span.pl-ent script
+    = succeed "=" do
+      %span.pl-e src
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        https://code.jquery.com/jquery-2.0.3.min.js
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent script
+%p
+  These two libraries won't do anything on their own, we need to write our own JavaScript to interact with them.  Let's begin by creating the folder
+  = succeed "." do
+    %code public/javascripts
+  %code support.js
+  and
+  = succeed "." do
+    %code application.js
+%p
+  The first file,
+  %code support.js
+  will contain some JavaScript we've already written for this project (think of it as a library). It's slightly more complicated than the other stuff, so we'll leave it until the end.  For now, simply copy and paste (just this once!) the contents from
+  %a{:href => "/support/support.js"} this file
+  into your
+  = succeed "." do
+    %code support.js
+  %code application.js
+  empty for the moment.
+%p
+  Add the following two lines to the
+  %code &lt;head&gt;
+  element of your
+  %code index.erb
+  to reference the new files:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent script
+    = succeed "=" do
+      %span.pl-e src
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        \/javascripts/support.js
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent script
+    %span.pl-ent script
+    = succeed "=" do
+      %span.pl-e src
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        \/javascripts/application.js
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent script
+%p
+  Your
+  %code &lt;head&gt;
+  element should now look something like this:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent> head
+    \&gt;
+    \&lt;
+    %span.pl-ent link
+    = succeed "=" do
+      %span.pl-e href
+    %span.pl-s
+      %span.pl-pds> "
+      \/css/application.css
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e rel
+    %span.pl-s
+      %span.pl-pds> "
+      stylesheet
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text/css
+        %span.pl-pds "
+    %span.pl-s1
+      \&lt;
+      %span.pl-ent script
+      = succeed "=" do
+        %span.pl-e src
+      = succeed "></" do
+        %span.pl-s
+          %span.pl-pds> "
+          https://www.google.com/jsapi
+          %span.pl-pds "
+      = succeed ">" do
+        %span.pl-ent script
+    %span.pl-s1
+      \&lt;
+      %span.pl-ent script
+      = succeed "=" do
+        %span.pl-e src
+      = succeed "></" do
+        %span.pl-s
+          %span.pl-pds> "
+          http://code.jquery.com/jquery-2.0.3.min.js
+          %span.pl-pds "
+      = succeed ">" do
+        %span.pl-ent script
+    %span.pl-s1
+      \&lt;
+      %span.pl-ent script
+      = succeed "=" do
+        %span.pl-e src
+      = succeed "></" do
+        %span.pl-s
+          %span.pl-pds> "
+          \/javascripts/support.js
+          %span.pl-pds "
+      = succeed ">" do
+        %span.pl-ent script
+    %span.pl-s1
+      \&lt;
+      %span.pl-ent script
+      = succeed "=" do
+        %span.pl-e src
+      = succeed "></" do
+        %span.pl-s
+          %span.pl-pds> "
+          \/javascripts/application.js
+          %span.pl-pds "
+      = succeed ">" do
+        %span.pl-ent script
+    \&lt;
+    %span.pl-ent> title
+    \&gt;Motivational Posters&lt;/
+    %span.pl-ent> title
+    \&gt;
+    \&lt;/
+    %span.pl-ent> head
+    \&gt;
+%p Make sure everything is saved then try loading the page.  If you load the page outside of Cloud9 (e.g. in a different browser tab), you can use the browser's developer tools to check there are no errors on the page.  If there are, you may have to fix them before going any further.  Following is an example showing the page opened in a separate tab with the Google Chrome developer console reporting an error:
+%p
+  %a{:href => "/images/step_5/js_error_loading_file.png", :target => "_blank"}
+    %img{:alt => "JavaScript error loading support.js", :src => "/images/step_5/js_error_loading_file.png", :style => "max-width:100%;"}/
+%p
+  Close inspection of the error should reveal that the URL for
+  %code support.js
+  is incorrect in this example; it should be
+  %code /javascripts/
+  not
+  = succeed "." do
+    %code /javascript/
+  %strong 404 errors
+  are a common occurrence and are often the result of a typo!
+%p
+  Assuming you've got everything working, let's move on to adding code in
+  = succeed "." do
+    %code application.js
+  %code support.js
+  that interacts with the Google Image Search API, now we need to call it when the search form is submitted.  We're going to use the jQuery library for this as it simplifies the JavaScript we need to write.  Remember: we're loading the jQuery library in this line
+  = succeed "." do
+    %code &lt;script src="http://code.jquery.com/jquery-2.0.3.min.js"&gt;&lt;/script&gt;
+%blockquote
+  %p jQuery is a powerful JavaScript library providing a number of utilities and a standardized way to interact with elements on the page.  When you 'write jQuery', it's still pure JavaScript, but you are calling functions and objects from the jQuery library.
+%p
+  Add the following to
+  = succeed ":" do
+    %code application.js
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-s>
+      %span.pl-pds> '
+      submit
+      %span.pl-pds '
+    ,
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#search-form
+        %span.pl-pds '
+    = succeed "(" do
+      %span.pl-k function
+    = succeed ")" do
+      %span.pl-smi e
+    = succeed "." do
+      %span.pl-smi e
+    = succeed "();" do
+      %span.pl-en preventDefault
+    %span.pl-k var
+    options
+    %span.pl-k =
+    {
+    keywords
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-term
+      %span.pl-pds '
+    ).
+    %span.pl-en> val
+    (),
+    container
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-results
+      %span.pl-pds '
+    )
+    };
+    = succeed "(options);" do
+      %span.pl-en findImagesOnGoogle
+%p
+  You'll have to be careful typing that in.  JavaScript is not always a pretty language, with lots of
+  = succeed "," do
+    %code ()
+  = succeed "," do
+    %code {}
+  %code ,
+  and
+  %code ;
+  getting in the way.  Unfortunately, with the exception of the odd semicolon, they're all essential.  But you'll get used to it.
+%p
+  Let's break this code down into pieces so it's easier to understand.  First, we want to respond to the user 'submitting' the form, which happens when they click the 'Go!' button, or press 'Enter' in the search text box.  The browser handles that for us automatically and reports that an
+  %strong event
+  has occurred.  jQuery provides a convenient syntax for responding (
+  %strong> handling
+  ) that event:
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-c1> event
+    , selector, handler);
+%p Where:
+%ul
+  %li
+    %code event
+    is the name of the event.  For form submissions, the event name is
+    = succeed "." do
+      %code submit
+  %li
+    %code selector
+    is a string (in the same format as a
+    = succeed ")" do
+      %strong CSS selector
+  %li
+    %code handler
+    is a function that contains the code to run when the event happens on the selected element.
+%p So, applying that to our page, we would have:
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-s>
+      %span.pl-pds> '
+      submit
+      %span.pl-pds '
+    ,
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#search-form
+        %span.pl-pds '
+    = succeed "(" do
+      %span.pl-k function
+    = succeed ")" do
+      %span.pl-smi e
+    %span.pl-smi our
+    code needs to go here...  });
+%p
+  %code> #search-form
+  , when interpreted as a CSS selector, means
+  = succeed "." do
+    %em
+      the element with
+      %code id="search-form"
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-s>
+      %span.pl-pds> '
+      submit
+      %span.pl-pds '
+    ,
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#search-form
+        %span.pl-pds '
+    = succeed "(" do
+      %span.pl-k function
+    = succeed ")" do
+      %span.pl-smi e
+    %span.pl-c // ...some code needs to go here...
+    });
+%p
+  Now, what do we want to happen? We want to search Google Images for a given keyword and show the results.  We have a function
+  %code findImagesOnGoogle
+  that we can call, but it requires some options to be passed to it.  The options must be passed to the function in the form of a JavaScript object, and that object must have a
+  %code keywords
+  property and a
+  %code container
+  property.  We can create just such an object in JavaScript like this:
+.highlight.highlight-source-js
+  %pre
+    %span.pl-k var
+    options
+    %span.pl-k =
+    {
+    keywords
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-term
+      %span.pl-pds '
+    ).
+    %span.pl-en> val
+    (),
+    container
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-results
+      %span.pl-pds '
+    )
+    };
+%p
+  This creates the new object and assigns it to a variable called
+  = succeed "." do
+    %code options
+  = succeed "." do
+    %code options
+%blockquote
+  %p
+    You may be wondering how we know the function
+    %code findImagesOnGoogle
+    requires an object to be passed to it with the properties
+    %code keywords
+    and
+    = succeed "." do
+      %code container
+    = succeed "." do
+      %em we wrote that function
+%p
+  The values of the properties are assigned using some jQuery.  Remember, our text field (in
+  = succeed ")" do
+    %code index.erb
+  = succeed ":" do
+    %code search-term
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e id
+    %span.pl-s
+      %span.pl-pds> "
+      search-term
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text
+        %span.pl-pds "
+%p
+  It has the
+  = succeed "," do
+    %code id="search-term"
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-term
+      %span.pl-pds '
+    ).
+    %span.pl-en> val
+    ()
+%p
+  This code means:
+  = succeed "." do
+    %em take the element with id of 'search-term' and return its value (i.e. what's typed inside)
+%p Where do we put the search results? Remember we created a special area for them?:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent div
+    = succeed "=" do
+      %span.pl-e id
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-results
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent div
+%p As you can probably guess by now, we can reference this area like this:
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-s>
+      %span.pl-pds> "
+      \#search-results
+      %span.pl-pds "
+    )
+%p Now we have everything we need to get the images from Google and show the results.
+.highlight.highlight-source-js
+  %pre
+    %span.pl-k var
+    options
+    %span.pl-k =
+    {
+    keywords
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-term
+      %span.pl-pds '
+    ).
+    %span.pl-en> val
+    (),
+    container
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-results
+      %span.pl-pds '
+    )
+    };
+    %span.pl-en> findImagesOnGoogle
+    (options);
+%p
+  So what about the
+  %code e.preventDefault()
+  bit?  We'll leave that for another time, but feel free to read up about it and experiment by taking it out.  Here's the full code again for you to peruse:
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-s>
+      %span.pl-pds> '
+      submit
+      %span.pl-pds '
+    ,
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#search-form
+        %span.pl-pds '
+    = succeed "(" do
+      %span.pl-k function
+    = succeed ")" do
+      %span.pl-smi e
+    = succeed "." do
+      %span.pl-smi e
+    = succeed "();" do
+      %span.pl-en preventDefault
+    %span.pl-k var
+    options
+    %span.pl-k =
+    {
+    keywords
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-term
+      %span.pl-pds '
+    ).
+    %span.pl-en> val
+    (),
+    container
+    %span.pl-k :
+    $(
+    %span.pl-s>
+      %span.pl-pds> '
+      \#search-results
+      %span.pl-pds '
+    )
+    };
+    = succeed "(options);" do
+      %span.pl-en findImagesOnGoogle
+%p Make sure everything is saved and refresh your browser.  Enter a search term and you'll see the results!
+%p
+  %a{:href => "/images/step_5/search_results.png", :target => "_blank"}
+    %img{:alt => "browser2", :src => "/images/step_5/search_results.png", :style => "max-width:100%;"}/
+%p Impressive, isn't it? Especially given how little work we actually had to do to achieve this result.
+%p It's still not pretty, but we'll fix that soon.
+%p
+  %a{:href => "/steps/4.md"} Previous step
+  |
+  %a{:href => "/steps/6.md"} Continue to Step 6

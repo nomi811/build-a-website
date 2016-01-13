@@ -1,0 +1,260 @@
+%h1
+  %a#user-content-activating-the-caption-controls.anchor{"aria-hidden" => "true", :href => "#activating-the-caption-controls"}>
+    %span.octicon.octicon-link
+  Activating the caption controls
+%p
+  To ensure the caption is updated when the control values are changed, we need to add some JavaScript. As before, we'll be listening for 'events' and executing code to update the caption when the events happen. Let's start with the first input control that is responsible for the left position of the caption. The JavaScript we'll be using should be familiar to you by now. Put this code in the
+  = succeed "." do
+    %code application.js
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-s>
+      %span.pl-pds> '
+      change
+      %span.pl-pds '
+    ,
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#caption-left
+        %span.pl-pds '
+    = succeed "()" do
+      %span.pl-k function
+    = succeed ")." do
+      %span.pl-s
+        %span.pl-pds> "
+        \#caption
+        %span.pl-pds "
+    = succeed "(" do
+      %span.pl-en css
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> "
+        left
+        %span.pl-pds "
+    = succeed ")." do
+      %span.pl-v this
+    = succeed "()" do
+      %span.pl-en val
+    %span.pl-k +
+    = succeed ");" do
+      %span.pl-s
+        %span.pl-pds> '
+        px
+        %span.pl-pds '
+%p
+  In plain English this means that when the element with an
+  %code id
+  of
+  %code caption-left
+  changes (that is, triggers the event
+  = succeed ")," do
+    %code change
+  %code left
+  CSS property of the element will get the value
+  = succeed "." do
+    %code $(this).val() + "px"
+  %code left
+  CSS property will become
+  %code 50px
+  \- i.e. 50 pixels. Try it in your browser: if you change the value of the input, it will update the position of the caption.
+%p
+  %strong Try it!
+%p
+  %a{:href => "/images/step_7/changing_the_left_property.png", :target => "_blank"}
+    %img{:alt => "changing the left property", :src => "/images/step_7/changing_the_left_property.png", :style => "max-width:100%;"}/
+%p You can probably write the JavaScript code for other fields without further help (you might need to look up the CSS properties), but here's the code just in case:
+.highlight.highlight-source-js
+  %pre
+    $(
+    %span.pl-c1> document
+    ).
+    %span.pl-en> on
+    (
+    %span.pl-s>
+      %span.pl-pds> '
+      change
+      %span.pl-pds '
+    ,
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#caption-top
+        %span.pl-pds '
+    = succeed "()" do
+      %span.pl-k function
+    = succeed ")." do
+      %span.pl-s
+        %span.pl-pds> "
+        \#caption
+        %span.pl-pds "
+    = succeed "(" do
+      %span.pl-en css
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> "
+        top
+        %span.pl-pds "
+    = succeed ")." do
+      %span.pl-v this
+    = succeed "()" do
+      %span.pl-en val
+    %span.pl-k +
+    = succeed ");" do
+      %span.pl-s
+        %span.pl-pds> '
+        px
+        %span.pl-pds '
+    = succeed ")." do
+      %span.pl-c1 document
+    = succeed "(" do
+      %span.pl-en on
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        change
+        %span.pl-pds '
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#caption-width
+        %span.pl-pds '
+    = succeed "()" do
+      %span.pl-k function
+    = succeed ")." do
+      %span.pl-s
+        %span.pl-pds> "
+        \#caption
+        %span.pl-pds "
+    = succeed "(" do
+      %span.pl-en css
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> "
+        width
+        %span.pl-pds "
+    = succeed ")." do
+      %span.pl-v this
+    = succeed "()" do
+      %span.pl-en val
+    %span.pl-k +
+    = succeed ");" do
+      %span.pl-s
+        %span.pl-pds> '
+        px
+        %span.pl-pds '
+    = succeed ")." do
+      %span.pl-c1 document
+    = succeed "(" do
+      %span.pl-en on
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        change
+        %span.pl-pds '
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#caption-size
+        %span.pl-pds '
+    = succeed "()" do
+      %span.pl-k function
+    = succeed ")." do
+      %span.pl-s
+        %span.pl-pds> "
+        \#caption
+        %span.pl-pds "
+    = succeed "(" do
+      %span.pl-en css
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> "
+        font-size
+        %span.pl-pds "
+    = succeed ")." do
+      %span.pl-v this
+    = succeed "()" do
+      %span.pl-en val
+    %span.pl-k +
+    = succeed ");" do
+      %span.pl-s
+        %span.pl-pds> '
+        px
+        %span.pl-pds '
+    = succeed ")." do
+      %span.pl-c1 document
+    = succeed "(" do
+      %span.pl-en on
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        change
+        %span.pl-pds '
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#caption-colour
+        %span.pl-pds '
+    = succeed "()" do
+      %span.pl-k function
+    = succeed ")." do
+      %span.pl-s
+        %span.pl-pds> "
+        \#caption
+        %span.pl-pds "
+    = succeed "(" do
+      %span.pl-en css
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> "
+        color
+        %span.pl-pds "
+    = succeed ")." do
+      %span.pl-v this
+    = succeed "());" do
+      %span.pl-en val
+    = succeed ")." do
+      %span.pl-c1 document
+    = succeed "(" do
+      %span.pl-en on
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        change
+        %span.pl-pds '
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> '
+        \#caption-align
+        %span.pl-pds '
+    = succeed "()" do
+      %span.pl-k function
+    = succeed ")." do
+      %span.pl-s
+        %span.pl-pds> "
+        \#caption
+        %span.pl-pds "
+    = succeed "(" do
+      %span.pl-en css
+    = succeed "," do
+      %span.pl-s
+        %span.pl-pds> "
+        text-align
+        %span.pl-pds "
+    = succeed ")." do
+      %span.pl-v this
+    = succeed "());" do
+      %span.pl-en val
+%p
+  The last two event handlers don't need
+  %code + 'px'
+  bit because colour and alignment are not measured in pixels, unlike position (left and top), width and font size.
+%p
+  %a{:href => "/steps/6.md"} Previous step
+  |
+  %a{:href => "/steps/8.md"} Continue to Step 8

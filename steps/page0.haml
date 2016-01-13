@@ -1,0 +1,146 @@
+%h1
+  %a#user-content-step-0-creating-a-development-environment.anchor{"aria-hidden" => "true", :href => "#step-0-creating-a-development-environment"}>
+    %span.octicon.octicon-link
+  Step 0: Creating a development environment
+%p At Makers Academy, we like to stay as close to the machine as we can.  That means working from the 'command line' and not relying on 'GUI' tools.  However, setting up your machine for web development can be tricky - especially on Windows - and can stop you before you really get started.
+%p
+  Fortunately, there are a number of cloud-based development environments available that provide an almost identical experience, but without the hassle of setting up your local machine.  For this project, we recommend you use
+  = succeed "." do
+    %a{:href => "https://c9.io"} Cloud9
+%ol
+  %li
+    %a{:href => "https://c9.io/web/sign-up/free"} Create a free account
+    on Cloud9
+  %li Choose 'Create a new workspace'
+  %li
+    Call your workspace
+    %code motivational-posters
+  %li Choose a Hosted workspace and make it Public (we'll be able to see it if you get stuck)
+  %li Choose 'Custom' as a template
+  %li Create the workspace (this will take Cloud9 a few moments)
+%p
+  %a{:href => "/images/step_0/creating_a_workspace.png", :target => "_blank"}
+    %img{:alt => "creating a workspace", :src => "/images/step_0/creating_a_workspace.png", :style => "max-width:100%;"}/
+%p When your workspace has been created, you should see it open in your browser.  It will look something like this:
+%p
+  %a{:href => "/images/step_0/cloud9_intro.jpg", :target => "_blank"}
+    %img{:alt => "Cloud9 interface", :src => "/images/step_0/cloud9_intro.jpg", :style => "max-width:100%;"}/
+%p
+  This is what is known in the business as an
+  %strong Integrated Development Environment
+  (
+  %strong> IDE
+  ).  IDEs are highly complex applications and take a bit of getting used to.  Think Microsoft Word, on steroids, exposed to radiation in a secret nuclear incident and having gained super powers.  Something like that.  Anyway, the important thing is, Cloud9 gives us the four critical components of our development environment:
+%ul
+  %li
+    A
+    %strong file system
+    to store our source files (code, images, HTML, CSS and so on),
+  %li
+    an
+    %strong editor
+    to edit our source files,
+  %li
+    an
+    %strong operating system
+    to run our programs
+  %li
+    and a
+    %strong command line
+    \- or
+    %strong terminal
+    \- to send instructions to the operating system.
+%h2
+  %a#user-content-step-01-update-the-readme.anchor{"aria-hidden" => "true", :href => "#step-01-update-the-readme"}>
+    %span.octicon.octicon-link
+  Step 0.1: Update the README
+%p
+  You'll notice that a single file has been created for you already -
+  = succeed "." do
+    %code README.md
+%p
+  If you double click the file in the tree view, it will open for editing in the main pane.  The file has a
+  %code .md
+  extension, which means it is intended to be written in
+  = succeed "," do
+    %strong Markdown
+  %strong GitHub
+  = succeed "." do
+    %a{:href => "https://guides.github.com/features/mastering-markdown/"} and here is a useful guide
+.highlight.highlight-source-gfm
+  %pre
+    %span.pl-mh
+      %span.pl-mh #
+      = succeed "Motivational" do
+        %span.pl-mh
+    Built by [your name here]
+%p Make sure you save the file.  Switch to the preview tab: has it been updated with your new content?
+%h2
+  %a#user-content-step-02-hello-ruby.anchor{"aria-hidden" => "true", :href => "#step-02-hello-ruby"}>
+    %span.octicon.octicon-link
+  Step 0.2: Hello Ruby
+%p
+  Ruby is a programming language. It comes pre-installed on your Cloud9 workspace. To test this, go to the command line and type (don't include the
+  = succeed "):" do
+    %code $
+%pre
+  %code
+    :preserve
+      $ ruby -v
+%p (...then hit return to enter it.) You should see something like this:
+%pre
+  %code
+    :preserve
+      ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-linux]
+%blockquote
+  %p
+    We'll use the
+    %code $
+    sign to represent the command line prompt and to differentiate commands you should enter from output you should see.
+%p
+  This tells us the currently installed version of Ruby (which we requested by passing
+  %code -v
+  to the
+  %code ruby
+  command).
+%h3
+  %a#user-content-writing-a-ruby-program.anchor{"aria-hidden" => "true", :href => "#writing-a-ruby-program"}>
+    %span.octicon.octicon-link
+  Writing a Ruby program
+%p
+  Create a file in your workspace called
+  = succeed "." do
+    %code hello.rb
+  = succeed "." do
+    %code .rb
+  %strong syntax highlighting
+  for all files with the
+  %code .rb
+  extension.
+%p Open the file in the editor and add the following content:
+.highlight.highlight-source-ruby
+  %pre
+    puts
+    %span.pl-s
+      %span.pl-pds> '
+      Hello Ruby
+      %span.pl-pds '
+%p See how syntax highlighting works?  The IDE recognizes the Ruby language and uses colours to differentiate elements of the 'grammar'.  You may see different colours depending on your chosen theme.
+%p Save the file.  Now go to the command line and enter the following:
+%pre
+  %code
+    :preserve
+      $ ruby hello.rb
+%p
+  This tells the Ruby engine to run the code in
+  = succeed "." do
+    %code hello.rb
+%pre
+  %code
+    :preserve
+      Hello Ruby
+%p You've just written a command-line program: you run it from the command line and it outputs to the command line!
+%p
+  %a{:href => "/"} Home
+  |
+  %a{:href => "/steps/1.md"} Continue to Step 1

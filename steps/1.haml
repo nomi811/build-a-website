@@ -1,0 +1,78 @@
+%h1
+  %a#user-content-step-1-hello-world-wide-web.anchor{"aria-hidden" => "true", :href => "#step-1-hello-world-wide-web"}>
+    %span.octicon.octicon-link
+  Step 1: Hello World (...Wide Web)
+%p
+  A website is a program that receives requests and sends responses over the Internet.  But that's a lot easier said than done.  Fortunately, it's also so utterly fundamental that the heavy lifting is already done for us by something else; something we call a
+  = succeed "." do
+    %strong web framework
+  = succeed "." do
+    %a{:href => "http://www.sinatrarb.com/"} Sinatra
+%h2
+  %a#user-content-creating-the-server.anchor{"aria-hidden" => "true", :href => "#creating-the-server"}>
+    %span.octicon.octicon-link
+  Creating the server
+%p
+  Create a file in your workspace called
+  = succeed "." do
+    %code server.rb
+%p Open the file in the editor and add the following content:
+.highlight.highlight-source-ruby
+  %pre
+    %span.pl-k require
+    %span.pl-s
+      %span.pl-pds> '
+      sinatra
+      %span.pl-pds '
+    get
+    %span.pl-s
+      %span.pl-pds> '
+      \/
+      %span.pl-pds '
+    %span.pl-k do
+    %span.pl-s
+      %span.pl-pds> '
+      Hello World
+      %span.pl-pds '
+    %span.pl-k end
+%p Make sure you save the file.  Now try running it from the command line:
+%pre
+  %code
+    :preserve
+      $ ruby server.rb -p $PORT -o $IP
+%blockquote
+  %p
+    Don't worry about what the
+    %code -p $PORT -o $IP
+    bit means at this stage - it's just something Cloud9 requires.
+%p You should get an error:
+%pre
+  %code
+    :preserve
+      /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- sinatra (LoadError)
+              from /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+              from server.rb:1:in `<main>'
+%p That was just to get you warmed up!  Error messages often look unfriendly, but they're really rather useful when you get to know them.  What does this one mean?
+%p If you throw your hands up in the air and exclaim 'How the devil should I know?', then don't worry.  That's how we all feel sometimes.  One of the skills of a good developer is to make and test small hypotheses about the cause of an error message, then iterate over that process until the solution is found.  Oh, and Google it.  You can always just Google it.
+%p But don't spend too long climbing down that rabbit hole, you might never make it back.  The answer here is actually much simpler than you might infer from some of the answers on Google.  Sinatra is just another Ruby program; but it's not yet installed in our workspace.  To install Sinatra, enter the following on the command line:
+%pre
+  %code
+    :preserve
+      $ gem install sinatra
+%p You should see a few lines of output and a confirmation that a certain number of gems have been installed.  Sinatra is itself dependent on some other programs, so when you install Sinatra, those dependencies are installed too.
+%p Let's try running it again:
+%pre
+  %code
+    :preserve
+      $ ruby server.rb -p $PORT -o $IP
+%p
+  Your program should now be running and sending output to the command line.  Cloud9 should also have opened a browser tab with the URL of your website, similar to
+  = succeed "." do
+    %code https://motivational-posters-[YOUR USERNAME].c9.io/
+%blockquote
+  %p If you made your workspace private instead of public, you'll have to sign in to visit the URL on another browser.
+%p To stop the program running, press Ctrl+C in the command window.
+%p
+  %a{:href => "/steps/0.md"} Previous step
+  |
+  %a{:href => "/steps/2.md"} Continue to Step 2

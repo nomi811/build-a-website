@@ -1,0 +1,174 @@
+%h1
+  %a#user-content-tweeting-your-success.anchor{"aria-hidden" => "true", :href => "#tweeting-your-success"}>
+    %span.octicon.octicon-link
+  Tweeting your success!
+%p
+  There's not much point building a website if you can't share it with your friends!  In the final step, we'll add a button that enables you - and anyone else - to tweet your application along with their current image and caption selections.  The latter part takes a bit of additional JavaScript that is already included in
+  = succeed "." do
+    %code support.js
+%h2
+  %a#user-content-get-the-tweet-button-code.anchor{"aria-hidden" => "true", :href => "#get-the-tweet-button-code"}>
+    %span.octicon.octicon-link
+  Get the Tweet button code
+%p
+  Twitter provides many developer resources, including some handy
+  = succeed ":" do
+    %a{:href => "https://about.twitter.com/resources/buttons#tweet"} code snippets for Tweet buttons and so on
+%p
+  %a{:href => "/images/step_10/twitter_buttons.png", :target => "_blank"}
+    %img{:alt => "twitter buttons", :src => "/images/step_10/twitter_buttons.png", :style => "max-width:100%;"}/
+%p
+  On the right you'll see the appropriate HTML code to include on your page. Copy it to the
+  %code index.erb
+  file right after
+  = succeed "," do
+    %code #caption-controls
+  %code &lt;div&gt;
+  element with the id of "twitter".
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent div
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        twitter
+        %span.pl-pds "
+    %span.pl-ent a
+    = succeed "=" do
+      %span.pl-e href
+    %span.pl-s
+      %span.pl-pds> "
+      https://twitter.com/share
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e class
+    %span.pl-s
+      %span.pl-pds> "
+      twitter-share-button
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e data-via
+    %span.pl-s
+      %span.pl-pds> "
+      @makersacademy
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e data-size
+    %span.pl-s
+      %span.pl-pds> "
+      large
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e data-text
+    = succeed ">Tweet</" do
+      %span.pl-s
+        %span.pl-pds> "
+        Today I finished building a 'Motivational Posters' website with @makersacademy!
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent a
+    %span.pl-s1
+      \&lt;
+      %span.pl-ent> script
+      \&gt;
+      %span.pl-k !
+      = succeed "(" do
+        %span.pl-k function
+      = succeed "," do
+        %span.pl-smi d
+      = succeed "," do
+        %span.pl-smi s
+      = succeed "){" do
+        %span.pl-smi id
+      %span.pl-k var
+      js,fjs
+      %span.pl-k =
+      = succeed "." do
+        %span.pl-smi d
+      = succeed "(s)[" do
+        %span.pl-c1 getElementsByTagName
+      = succeed "],p" do
+        %span.pl-c1 0
+      %span.pl-k =
+      = succeed "." do
+        %span.pl-sr
+          %span.pl-pds /
+          = succeed "http:" do
+            %span.pl-k ^
+          %span.pl-pds /
+      = succeed "(" do
+        %span.pl-c1 test
+      = succeed "." do
+        %span.pl-smi d
+      = succeed ")" do
+        %span.pl-c1 location
+      %span.pl-k ?
+      %span.pl-s
+        %span.pl-pds> '
+        http
+        %span.pl-pds '
+      %span.pl-k :
+      = succeed ";" do
+        %span.pl-s
+          %span.pl-pds> '
+          https
+          %span.pl-pds '
+      = succeed "(" do
+        %span.pl-k if
+      %span.pl-k !
+      = succeed "." do
+        %span.pl-smi d
+      = succeed "(id)){js" do
+        %span.pl-c1 getElementById
+      %span.pl-k =
+      = succeed "." do
+        %span.pl-smi d
+      = succeed "(s);" do
+        %span.pl-c1 createElement
+      = succeed "." do
+        %span.pl-smi js
+      %span.pl-c1 id
+      = succeed "id;" do
+        %span.pl-k =
+      = succeed "." do
+        %span.pl-smi js
+      %span.pl-smi src
+      = succeed "p" do
+        %span.pl-k =
+      %span.pl-k +
+      = succeed ";" do
+        %span.pl-s
+          %span.pl-pds> '
+          \://platform.twitter.com/widgets.js
+          %span.pl-pds '
+      = succeed "." do
+        %span.pl-smi fjs
+      = succeed "." do
+        %span.pl-c1 parentNode
+      = succeed "(js,fjs);}}(" do
+        %span.pl-c1 insertBefore
+      = succeed "," do
+        %span.pl-c1 document
+      = succeed "," do
+        %span.pl-s
+          %span.pl-pds> '
+          script
+          %span.pl-pds '
+      = succeed ");</" do
+        %span.pl-s
+          %span.pl-pds> '
+          twitter-wjs
+          %span.pl-pds '
+      = succeed ">" do
+        %span.pl-ent script
+    \&lt;/
+    %span.pl-ent> div
+    \&gt;
+%p Refresh the page. Now you should see the tweet button below the caption controls:
+%p
+  %a{:href => "/images/step_10/tweet_button.png", :target => "_blank"}
+    %img{:alt => "tweet button", :src => "/images/step_10/tweet_button.png", :style => "max-width:100%;"}/
+%p So now you can send a tweet to all your followers and show them the awesome website you've built!

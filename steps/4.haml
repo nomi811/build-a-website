@@ -1,0 +1,388 @@
+%h2
+  %a#user-content-step-4-adding-some-proper-content.anchor{"aria-hidden" => "true", :href => "#step-4-adding-some-proper-content"}>
+    %span.octicon.octicon-link
+  Step 4: Adding some proper content
+%p
+  We've had a bit of a play with HTML now, so now let's get down to building our website.  Replace the contents of the
+  %code &lt;body&gt;
+  element as follows:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent> body
+    \&gt;
+    \&lt;
+    %span.pl-ent> header
+    \&gt;
+    \&lt;
+    %span.pl-ent> h1
+    \&gt;Motivational posters&lt;/
+    %span.pl-ent> h1
+    \&gt;
+    \&lt;/
+    %span.pl-ent> header
+    \&gt;
+    \&lt;/
+    %span.pl-ent> body
+    \&gt;
+%p Next, we'll add a section, step by step, for searching for images on Google.
+%p Right now, your website should look something like this:
+%p
+  %a{:href => "/images/step_4/motivational_header.png", :target => "_blank"}
+    %img{:alt => "screenshot", :src => "/images/step_4/motivational_header.png", :style => "max-width:100%;"}/
+%blockquote
+  %p Note: most of the screenshots that follow were taken from a version of this project that was not hosted on Cloud9, which is why the URL is different.
+%p
+  Next add a
+  %code &lt;section&gt;
+  tag directly after the closing
+  %code &lt;/header&gt;
+  tag:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent> header
+    \&gt;
+    \&lt;
+    %span.pl-ent> h1
+    \&gt;Motivational posters&lt;/
+    %span.pl-ent> h1
+    \&gt;
+    \&lt;/
+    %span.pl-ent> header
+    \&gt;
+    \&lt;
+    %span.pl-ent section
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        select-image
+        %span.pl-pds "
+    = succeed ">Step" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent section
+%p
+  It's very similar to the
+  %code &lt;header&gt;
+  element above it, but has two differences. First, we're using the
+  %code &lt;h2&gt;
+  tag for the heading, instead of
+  = succeed "." do
+    %code &lt;h1&gt;
+  %strong id
+  of
+  = succeed "." do
+    %code select-image
+  %code &lt;section&gt;
+  elements in our final HTML and it will be useful to be able to refer to them individually.
+%p Let's add add a paragraph of text:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent section
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        select-image
+        %span.pl-pds "
+    = succeed ">Step" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent h2
+    = succeed ">Enter" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent section
+%p Now your page should look like this:
+%p
+  %a{:href => "/images/step_4/select_image.png", :target => "_blank"}
+    %img{:alt => "screenshot", :src => "/images/step_4/select_image.png", :style => "max-width:100%;"}/
+%p
+  Next, we'll add a
+  %strong form
+  with an
+  %strong input field
+  to allow our user to enter a keyword:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent section
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        select-image
+        %span.pl-pds "
+    = succeed ">Step" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent h2
+    = succeed ">Enter" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent p
+    %span.pl-ent form
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-form
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e id
+    %span.pl-s
+      %span.pl-pds> "
+      search-term
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent form
+    = succeed ">" do
+      %span.pl-ent section
+%p
+  There are a number of types of input field that a browser can provide.  In this case, we want a text box, which we specify to the browser using the attribute
+  = succeed "." do
+    %code type="text"
+%blockquote
+  %p
+    You may know that there is a
+    %code &lt;button&gt;
+    tag in HTML.  However, we don't use it here because we actually want something more specific.
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent section
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        select-image
+        %span.pl-pds "
+    = succeed ">Step" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent h2
+    = succeed ">Enter" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent p
+    %span.pl-ent form
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-form
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e id
+    %span.pl-s
+      %span.pl-pds> "
+      search-term
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e type
+    %span.pl-s
+      %span.pl-pds> "
+      submit
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e value
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        Go!
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent form
+    = succeed ">" do
+      %span.pl-ent section
+%p Lastly, we'll need somewhere on the page for the search results to go.  Normally, we'd cross that bridge when we come to it, but while we're here let's cheat a bit and add it now:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent section
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        select-image
+        %span.pl-pds "
+    = succeed ">Step" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent h2
+    = succeed ">Enter" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent p
+    %span.pl-ent form
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-form
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e id
+    %span.pl-s
+      %span.pl-pds> "
+      search-term
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e type
+    %span.pl-s
+      %span.pl-pds> "
+      submit
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e value
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        Go!
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent form
+    %span.pl-ent div
+    = succeed "=" do
+      %span.pl-e id
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-results
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent div
+    = succeed ">" do
+      %span.pl-ent section
+%p
+  %code &lt;div&gt;
+  is a generic tag frequently used to create container elements and elements we'll later interact with using JavaScript.  As it's currently empty, it won't be visible on the page.
+%p Oh, and post-lastly(!), it is a requirement of the Google Image Search API, which we will be using next, to include a 'powered by Google' image on the page.  We'll quickly add a placeholder for that too:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent section
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        select-image
+        %span.pl-pds "
+    = succeed ">Step" do
+      %span.pl-ent h2
+    = succeed ">" do
+      %span.pl-ent h2
+    = succeed ">Enter" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent p
+    %span.pl-ent form
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-form
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e id
+    %span.pl-s
+      %span.pl-pds> "
+      search-term
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text
+        %span.pl-pds "
+    %span.pl-ent input
+    = succeed "=" do
+      %span.pl-e type
+    %span.pl-s
+      %span.pl-pds> "
+      submit
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e value
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        Go!
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent form
+    %span.pl-ent div
+    = succeed "=" do
+      %span.pl-e id
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        search-results
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent div
+    %span.pl-ent div
+    = succeed "=" do
+      %span.pl-e id
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        google-branding
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent div
+    = succeed ">" do
+      %span.pl-ent section
+%p So, this is what our application looks like now.
+%p
+  %a{:href => "/images/step_4/select_image_2.png", :target => "_blank"}
+    %img{:alt => "screenshot", :src => "/images/step_4/select_image_2.png", :style => "max-width:100%;"}/
+%p
+  %a{:href => "/steps/3.md"} Previous step
+  |
+  %a{:href => "/steps/5.md"} Continue to Step 5

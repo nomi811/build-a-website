@@ -1,0 +1,178 @@
+%h2
+  %a#user-content-step-3-adding-some-style.anchor{"aria-hidden" => "true", :href => "#step-3-adding-some-style"}>
+    %span.octicon.octicon-link
+  Step 3: Adding some style
+%p CSS (Cascading Style Sheets) is the technology we use to define the layout and design of our websites (remember, HTML is for structure and content). Using CSS, we can elevate our website from just black text on a white background.
+%p
+  We are not looking to win any design awards here, just to demonstrate the principals of styling a website. To begin with, let's choose a background. Go to
+  %a{:href => "http://subtlepatterns.com"} Subtle Patterns
+  and choose any background that you like. It will help if your background is light not dark. Download the background you have chosen from the website and unzip it.  For example (unzipped):
+%p
+  %a{:href => "/images/step_3/ricepaper.png", :target => "_blank"}
+    %img{:alt => "ricepaper", :src => "/images/step_3/ricepaper.png", :style => "max-width:100%;"}/
+%p
+  Create a
+  %code public
+  folder in your workspace and an
+  %code images
+  folder inside
+  = succeed ":" do
+    %code public
+%p
+  %a{:href => "/images/step_3/public_images_folder.png", :target => "_blank"}
+    %img{:alt => "public/images folder", :src => "/images/step_3/public_images_folder.png", :style => "max-width:100%;"}/
+%p
+  Now upload the background image you have chosen (the smaller if there is more than one -
+  %code ricepaper_v3.png
+  in this example) to
+  = succeed "." do
+    %code public/images
+%p
+  To set this as the background image of our website, we can add some CSS directly to the
+  %code index.erb
+  file by adding a
+  %code style
+  attribute to the
+  %code &lt;body&gt;
+  tag:
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;!DOCTYPE html&gt;
+    \&lt;
+    %span.pl-ent> html
+    \&gt;
+    \&lt;
+    %span.pl-ent> head
+    \&gt;
+    \&lt;
+    %span.pl-ent> title
+    \&gt;Motivational Posters&lt;/
+    %span.pl-ent> title
+    \&gt;
+    \&lt;/
+    %span.pl-ent> head
+    \&gt;
+    \&lt;
+    %span.pl-ent body
+    = succeed "=" do
+      %span.pl-e style
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        background-image: url(/images/ricepaper_v3.png)
+        %span.pl-pds "
+    = succeed ">Motivational" do
+      %span.pl-ent h1
+    = succeed ">" do
+      %span.pl-ent h1
+    = succeed ">By" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent p
+    = succeed ">" do
+      %span.pl-ent body
+    = succeed ">" do
+      %span.pl-ent html
+%p Save the file and reload the page in Cloud9.  It should now look like this:
+%p
+  %a{:href => "/images/step_3/applying_background.png", :target => "_blank"}
+    %img{:alt => "Applying ricepaper background", :src => "/images/step_3/applying_background.png", :style => "max-width:100%;"}/
+%p
+  The CSS we just added tells the browser to render the
+  %strong body
+  of our page - i.e. everything that's visible on the screen - with the specified background image.  Once upon a time, all CSS was added directly inline in the HTML like this.  However, as with the previous step, this is going to be difficult to read and maintain.  We want to put all of our styles in a separate file (or files).
+%p
+  Create a folder
+  %code css
+  inside the
+  %code public
+  folder.  Create a file called
+  %code application.css
+  inside
+  = succeed "." do
+    %code public/css
+  %em all
+  of our styling instructions in this file, so please remove the
+  %code style
+  attribute added to
+  %code index.erb
+  in the previous step.
+%p
+  Add the following to
+  = succeed ":" do
+    %code public/css/application.css
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent body
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-image
+    = succeed "(" do
+      %span.pl-c1 url
+    = succeed ")" do
+      %span.pl-v /images/ricepaper_v3.png
+%p
+  Obviously, you'll need to substitute
+  %code ricepaper_v3.png
+  if you chose a different background.
+%p
+  You can interpret this CSS code as being the following instruction to the browser:
+  = succeed "." do
+    %em
+      render any
+      %code body
+      element on the page using the background image found at the URL
+      %code /images/ricepaper_v3.png
+  = succeed "," do
+    %code body
+%p Refresh the browser now.  Did it work?  Did you expect it to work?  It doesn't matter whether you were right or wrong - what matters is how you use that outcome to progress.  Take a few moments to consider the changes we just made and how they might have effected the outcome.
+%p
+  The answer is that the browser doesn't know anything about
+  = succeed "." do
+    %code public/css/application.css
+  %code &lt;head&gt;
+  element of our HTML in
+  = succeed ":" do
+    %code index.erb
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent> head
+    \&gt;
+    \&lt;
+    %span.pl-ent link
+    = succeed "=" do
+      %span.pl-e href
+    %span.pl-s
+      %span.pl-pds> "
+      \/css/application.css
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e rel
+    %span.pl-s
+      %span.pl-pds> "
+      stylesheet
+      %span.pl-pds "
+    = succeed "=" do
+      %span.pl-e type
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        text/css
+        %span.pl-pds "
+    = succeed ">Motivational" do
+      %span.pl-ent title
+    = succeed ">" do
+      %span.pl-ent title
+    = succeed ">" do
+      %span.pl-ent head
+%blockquote
+  %p
+    Note how the
+    %code /public
+    prefix is missing from the beginning of the path to both the stylesheet and the background image in the CSS file.  This is related to the way Sinatra works.
+%p
+  %a{:href => "/steps/2.md"} Previous step
+  |
+  %a{:href => "/steps/4.md"} Continue to Step 4

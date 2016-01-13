@@ -1,0 +1,137 @@
+%h2
+  %a#user-content-step-2-responding-with-html.anchor{"aria-hidden" => "true", :href => "#step-2-responding-with-html"}>
+    %span.octicon.octicon-link
+  Step 2: Responding with HTML
+%p
+  Admittedly, sending a single string 'Hello World' to a browser window is not very useful.  It is, however, worth it to see how much a web framework does for you.  All we had to do in our
+  %code server.rb
+  file was define a
+  %strong path
+  (
+  %code> '/'
+  ) and a response (
+  %code> 'Hello World'
+  ).
+%p
+  The path forms part of the URL to which the browser makes a request - it's the bit that comes after the domain (i.e.
+  = succeed ")." do
+    %code motivational-posters-[YOUR USERNAME].c9.io
+  = succeed ")" do
+    %code '/'
+  %strong root path
+  \- i.e.
+  %code https://motivational-posters-[YOUR USERNAME].c9.io/[NOTHING HERE]
+%p
+  Rather than return a single string, let's respond with some HTML.  HTML (Hypertext Markup Language) is the language of the web and it is used to define the
+  %em structure
+  and
+  %em content
+  of a 'page'.  Since HTML is just text, you might be tempted to do this:
+.highlight.highlight-source-ruby
+  %pre
+    %span.pl-k require
+    %span.pl-s
+      %span.pl-pds> '
+      sinatra
+      %span.pl-pds '
+    get
+    %span.pl-s
+      %span.pl-pds> '
+      \/
+      %span.pl-pds '
+    %span.pl-k do
+    %span.pl-s
+      %span.pl-pds> '
+      \&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello World&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+      %span.pl-pds '
+    %span.pl-k end
+%p Try it.  You will need to stop and restart your program after making the changes.
+%blockquote
+  %p Why is it necessary to stop and restart the program?  It may or may not be obvious - but it's good to ask yourself these questions.
+%p
+  Did it work?  It should have.  But it's not very pretty and HTML pages can get
+  = succeed "," do
+    %em very long
+%p
+  Create a new folder in your workspace called
+  = succeed "." do
+    %code views
+  %code views
+  folder called
+  = succeed "," do
+    %code index.erb
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;!DOCTYPE html&gt;
+    \&lt;
+    %span.pl-ent> html
+    \&gt;
+    \&lt;
+    %span.pl-ent> head
+    \&gt;
+    \&lt;
+    %span.pl-ent> title
+    \&gt;Motivational Posters&lt;/
+    %span.pl-ent> title
+    \&gt;
+    \&lt;/
+    %span.pl-ent> head
+    \&gt;
+    \&lt;
+    %span.pl-ent> body
+    \&gt;
+    \&lt;
+    %span.pl-ent> h1
+    \&gt;Motivational Posters&lt;/
+    %span.pl-ent> h1
+    \&gt;
+    \&lt;
+    %span.pl-ent> p
+    \&gt;By tonight I'll have a fully-functioning website!&lt;/
+    %span.pl-ent> p
+    \&gt;
+    \&lt;/
+    %span.pl-ent> body
+    \&gt;
+    \&lt;/
+    %span.pl-ent> html
+    \&gt;
+%p
+  Now change
+  %code server.rb
+  to the following:
+.highlight.highlight-source-ruby
+  %pre
+    %span.pl-k require
+    %span.pl-s
+      %span.pl-pds> '
+      sinatra
+      %span.pl-pds '
+    get
+    %span.pl-s
+      %span.pl-pds> '
+      \/
+      %span.pl-pds '
+    %span.pl-k do
+    erb
+    %span.pl-c1 :index
+    %span.pl-k end
+%p
+  Save the changes and re-run the program.  You might be wondering what
+  %code erb :index
+  means and why the file is called
+  = succeed "." do
+    %code index.erb
+%p
+  Without going too far into the technology of ERB (Embedded Ruby) and how Sinatra uses it, it's sufficient to understand that
+  %code erb :index
+  looks for a file called
+  = succeed "," do
+    %code /views/index.erb
+%p
+  %a{:href => "/images/step_2/rendering_page_from_erb.png", :target => "_blank"}
+    %img{:alt => "Rendering the page from an ERB file", :src => "/images/step_2/rendering_page_from_erb.png", :style => "max-width:100%;"}/
+%p
+  %a{:href => "/steps/1.md"} Previous step
+  |
+  %a{:href => "/steps/3.md"} Continue to Step 3

@@ -1,0 +1,492 @@
+%h1
+  %a#user-content-finishing-in-style.anchor{"aria-hidden" => "true", :href => "#finishing-in-style"}>
+    %span.octicon.octicon-link
+  Finishing in style
+%h2
+  %a#user-content-add-the-footer.anchor{"aria-hidden" => "true", :href => "#add-the-footer"}>
+    %span.octicon.octicon-link
+  Add the footer
+%p
+  Let's add the final section on the page: the footer. Add the HTML below to the very end of the
+  %code &lt;body&gt;
+  section in
+  = succeed "," do
+    %code index.erb
+.highlight.highlight-text-html-basic
+  %pre
+    \&lt;
+    %span.pl-ent> footer
+    \&gt;
+    \&lt;
+    %span.pl-ent div
+    = succeed "=" do
+      %span.pl-e id
+    = succeed ">" do
+      %span.pl-s
+        %span.pl-pds> "
+        footer
+        %span.pl-pds "
+    %span.pl-ent a
+    = succeed "=" do
+      %span.pl-e href
+    = succeed "><" do
+      %span.pl-s
+        %span.pl-pds> "
+        http://www.makersacademy.com/
+        %span.pl-pds "
+    %span.pl-ent img
+    = succeed "=" do
+      %span.pl-e src
+    = succeed "></" do
+      %span.pl-s
+        %span.pl-pds> "
+        http://assets.makersacademy.com/images/logo/ma-wordmark-red.png
+        %span.pl-pds "
+    = succeed ">" do
+      %span.pl-ent a
+    = succeed ">" do
+      %span.pl-ent div
+    %span.pl-ent a
+    = succeed "=" do
+      %span.pl-e href
+    = succeed ">Makers" do
+      %span.pl-s
+        %span.pl-pds> "
+        http://www.makersacademy.com
+        %span.pl-pds "
+    = succeed ">," do
+      %span.pl-ent a
+    = succeed ">" do
+      %span.pl-ent div
+    = succeed ">" do
+      %span.pl-ent div
+    = succeed ">" do
+      %span.pl-ent div
+    = succeed ">" do
+      %span.pl-ent div
+    = succeed ">" do
+      %span.pl-ent footer
+%p Now we can see the footer on the page, but it's completely un-styled.  It's often easier to write CSS once you have elements to apply it to; otherwise you're writing CSS in the dark!
+%p
+  %a{:href => "/images/step_8/footer_unstyled.png", :target => "_blank"}
+    %img{:alt => "style", :src => "/images/step_8/footer_unstyled.png", :style => "max-width:100%;"}/
+%h2
+  %a#user-content-complete-the-styling.anchor{"aria-hidden" => "true", :href => "#complete-the-styling"}>
+    %span.octicon.octicon-link
+  Complete the styling
+%p First, let's make sure everything is nicely centred. Remember how we set the background for the page?
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent body
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-image
+    = succeed "(" do
+      %span.pl-c1 url
+    = succeed ")" do
+      %span.pl-v /images/ricepaper_v3.png
+%p
+  Let's expand this CSS rule by adding a few more properties to
+  = succeed ":" do
+    %code application.css
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent body
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-image
+    = succeed "(" do
+      %span.pl-c1 url
+    = succeed ");" do
+      %span.pl-v /images/ricepaper_v3.png
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 text-align
+    = succeed ";" do
+      %span.pl-c1 center
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 color
+    = succeed "(" do
+      %span.pl-c1 rgb
+    = succeed ");" do
+      %span.pl-c1 0, 51, 63
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 font-family
+    = succeed "," do
+      %span.pl-c1 Helvetica
+    = succeed ";" do
+      %span.pl-c1 Arial
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin
+    = succeed ";" do
+      %span.pl-c1 0
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1 0
+%p
+  This will make everything in the
+  %code &lt;body&gt;
+  element centred, the text dark grey, the font used will be Helvetica (and if that's not available for some reason, Arial), and the page will have zero margin and padding on the side. You can see the effect straight away.
+%p
+  %a{:href => "/images/step_8/body_element_styles.png", :target => "_blank"}
+    %img{:alt => "body element styles", :src => "/images/step_8/body_element_styles.png", :style => "max-width:100%;"}/
+%p Now let's add some style to the header:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent header
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1
+        15
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-color
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 255,255,255, 0.7
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 box-shadow
+    %span.pl-c1
+      1
+      %span.pl-k px
+    %span.pl-c1 0
+    %span.pl-c1
+      3
+      %span.pl-k px
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 0,0,0, 0.3
+%p
+  This gives it some padding, so the text is not as close to the edge of the page. It also applies some background colour. Here,
+  %code rgba(255,255,255, 0.7)
+  means white with the opacity of 70%. Finally, we apply some black shadow that's 3 pixels wide with 30% opacity. It will give the header volume.
+%p
+  %a{:href => "/images/step_8/header_styles.png", :target => "_blank"}
+    %img{:alt => "header styles", :src => "/images/step_8/header_styles.png", :style => "max-width:100%;"}/
+%p Next let's add some styling to the first section (Step 1). It has the id of "select-image". Let's give it some background and some padding, like we have with the header:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-e #select-image
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-color
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 255,255,255, 0.3
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+%p
+  The
+  %code rgba(255,255,255,0.3)
+  means white background with 30% opacity.
+%p
+  %a{:href => "/images/step_8/first_section_styles.png", :target => "_blank"}
+    %img{:alt => "first section styles", :src => "/images/step_8/first_section_styles.png", :style => "max-width:100%;"}/
+%p We'll continue the styling with the second section.  It needs some colour and padding too. This time we'll use an off-white tinge. If we mix green and blue but leave out red, then the result will be cyan (greenish-blue). We'll set this background with a very low opacity; to show just a hint of this colour:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-e #add-text
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-color
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 0,255,255, 0.02
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 box-shadow
+    %span.pl-c1
+      1
+      %span.pl-k px
+    %span.pl-c1 0
+    %span.pl-c1
+      3
+      %span.pl-k px
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 0,0,0, 0.3
+%p
+  %a{:href => "/images/step_8/second_section_styles.png", :target => "_blank"}
+    %img{:alt => "second section styles", :src => "/images/step_8/second_section_styles.png", :style => "max-width:100%;"}/
+%p
+  Let's also make the input box wider and set the alignment to
+  = succeed "." do
+    %code center
+.highlight.highlight-source-css
+  %pre
+    %span.pl-e #caption-text
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 width
+    = succeed ";" do
+      %span.pl-c1
+        600
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 text-align
+    = succeed ";" do
+      %span.pl-c1 center
+%p
+  %a{:href => "/images/step_8/caption_text_input_styles.png", :target => "_blank"}
+    %img{:alt => "caption text styles", :src => "/images/step_8/caption_text_input_styles.png", :style => "max-width:100%;"}/
+%p We'll make all input fields slightly larger by increasing the size of the font:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent input
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 font-size
+    = succeed ";" do
+      %span.pl-c1
+        16
+        %span.pl-k px
+%p And add some styles for section 3:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-e #style-caption
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-color
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 255,255,255, 0.7
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 box-shadow
+    %span.pl-c1
+      1
+      %span.pl-k px
+    %span.pl-c1 0
+    %span.pl-c1
+      3
+      %span.pl-k px
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 0,0,0, 0.3
+%p
+  %a{:href => "/images/step_8/third_section_styles.png", :target => "_blank"}
+    %img{:alt => "third section styles", :src => "/images/step_8/third_section_styles.png", :style => "max-width:100%;"}/
+%p Now the section itself looks a little bit better but the caption controls are a mess. Let's style them too:
+%p First, some padding and the font size.
+.highlight.highlight-source-css
+  %pre
+    %span.pl-e #caption-controls
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 font-size
+    = succeed ";" do
+      %span.pl-c1
+        14
+        %span.pl-k px
+%p Then, let's make the inputs of type 'number' fairly narrow:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-e #caption-controls
+    = succeed "[type=\"number\"]" do
+      %span.pl-ent input
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 width
+    = succeed ";" do
+      %span.pl-c1
+        50
+        %span.pl-k px
+%p
+  %a{:href => "/images/step_8/caption_control_styles.png", :target => "_blank"}
+    %img{:alt => "caption control styles", :src => "/images/step_8/caption_control_styles.png", :style => "max-width:100%;"}/
+%p We'll finish by styling with the footer. The content is ready but it looks terrible. First, the familiar tricks: background, shadows, padding, text alignment:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent footer
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 background-color
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 255,0,255,0.01
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 padding
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 text-align
+    = succeed ";" do
+      %span.pl-c1 left
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 font-size
+    = succeed ";" do
+      %span.pl-c1
+        12
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 box-shadow
+    %span.pl-c1
+      \-1
+      %span.pl-k px
+    %span.pl-c1 0
+    %span.pl-c1
+      5
+      %span.pl-k px
+    = succeed "(" do
+      %span.pl-c1 rgba
+    = succeed ");" do
+      %span.pl-c1 0,0,0, 0.3
+    %span.pl-e #footer
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin
+    %span.pl-c1 0
+    = succeed ";" do
+      %span.pl-c1 auto
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 width
+    = succeed ";" do
+      %span.pl-c1
+        800
+        %span.pl-k px
+%p Now it looks slightly better, but still not right. We want the Makers Academy logo on the left with a bit of space between it and the text. We can achieve this by setting the float CSS property and applying some margin on the right.  We'll also adjust the size so its less enormous!
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent footer
+    %span.pl-ent img
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 float
+    = succeed ";" do
+      %span.pl-c1 left
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin-right
+    = succeed ";" do
+      %span.pl-c1
+        40
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 width
+    = succeed ";" do
+      %span.pl-c1
+        240
+        %span.pl-k px
+%p
+  The lines of text are a bit close together. Since they are both in their own elements (
+  %code> div
+  s), we can give them some space by adding margin above and below:
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent footer
+    %span.pl-ent div
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin-top
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin-bottom
+    = succeed ";" do
+      %span.pl-c1
+        10
+        %span.pl-k px
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin-left
+    = succeed ";" do
+      %span.pl-c1 0
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin-right
+    = succeed ";" do
+      %span.pl-c1 0
+%p
+  Actually, there's a shortcut in CSS, which we've used previously, for defining margins on a single line.  Have a look at your
+  %code application.css
+  file and see if you can find it.  If you can, try to use this pattern to define a 10 pixel margin top and bottom.
+%p If you
+.highlight.highlight-source-css
+  %pre
+    %span.pl-ent footer
+    %span.pl-ent div
+    {
+    = succeed ":" do
+      %span.pl-c1
+        %span.pl-c1 margin
+    %span.pl-c1
+      10
+      %span.pl-k px
+    = succeed ";" do
+      %span.pl-c1 0
+%p Cool! Now our footer looks much more organized.
+%p
+  %a{:href => "/images/step_8/footer_styled.png", :target => "_blank"}
+    %img{:alt => "footer styled", :src => "/images/step_8/footer_styled.png", :style => "max-width:100%;"}/
+%p
+  %a{:href => "/steps/7.md"} Previous step
+  |
+  %a{:href => "/steps/9.md"} Continue to Step 9

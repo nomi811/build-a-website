@@ -1,0 +1,240 @@
+%h1
+  %a#user-content-releasing-your-app-into-the-wild.anchor{"aria-hidden" => "true", :href => "#releasing-your-app-into-the-wild"}>
+    %span.octicon.octicon-link
+  Releasing your app into the wild
+%p One of the great benefits of Cloud9 is that your application is already online.  You can enter your application's URL in any browser anywhere and see it running.  However, this is really only intended for development and testing.  If you don't interact with your workspace IDE for 2 days, Cloud9 will shut down any running processes (i.e. your server).  You won't lose any work - you just won't be able to access the application from outside of Cloud9 until you log in the IDE again.  You'll see something like this:
+%p
+  %a{:href => "/images/step_9/no_app_running.png", :target => "_blank"}
+    %img{:alt => "no application seems to be running here", :src => "/images/step_9/no_app_running.png", :style => "max-width:100%;"}/
+%p
+  What we need to do now is
+  %strong deploy
+  the application to a
+  = succeed "." do
+    %strong production environment
+%p
+  To deploy our application, we're going to need some tools (yay, we love tools!).  The first is called Git (yes, it's really called Git).  Git is incredibly powerful but we won't go into everything it can do here.  We are going to use one of its features to
+  %strong push
+  our source code to our production environment once it's created.  Git is already installed on Cloud9 and you can test it by entering this into the command line:
+%pre
+  %code
+    :preserve
+      $ git
+%p Wow, didn't see that coming!
+%p You should see an output something like this:
+%pre
+  %code
+    :preserve
+      usage: git [--version] [--help] [-C <path>] [-c name=value]
+                 [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+                 [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+                 [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+                 <command> [<args>]
+%p
+  \...and a list of common commands.  Git manages the files in your working directory, but it must be initialized first.  It must be initialized in the workspace folder, so make sure your command line prompt ends in
+  = succeed "." do
+    %code ~/workspace
+%pre
+  %code
+    :preserve
+      $ cd ~/workspace
+%p To initialize git, enter:
+%pre
+  %code
+    :preserve
+      $ git init
+%p You should see the following output:
+%pre
+  %code
+    :preserve
+      Initialized empty Git repository in /home/ubuntu/workspace/.git/
+%p Now enter the following and see what you can make of the response:
+%pre
+  %code
+    :preserve
+      $ git status
+      On branch master
+      
+      Initial commit
+      
+      Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+      
+              README.md
+              public/
+              server.rb
+              views/
+      
+      nothing added to commit but untracked files present (use "git add" to track)
+%p We need Git to track all our files, which we can do with the following command:
+%pre
+  %code
+    :preserve
+      $ git add .
+%p
+  Note the
+  %code .
+  \- that's important, it's a Unix command meaning
+  = succeed "." do
+    %em the current directory
+%pre
+  %code
+    :preserve
+      $ git status
+      On branch master
+      
+      Initial commit
+      
+      Changes to be committed:
+        (use "git rm --cached <file>..." to unstage)
+      
+              new file:   README.md
+              new file:   public/css/application.css
+              new file:   public/images/ricepaper_v3.png
+              new file:   public/javascripts/application.js
+              new file:   public/javascripts/support.js
+              new file:   server.rb
+              new file:   views/index.erb
+%p Hopefully you can make some vague sense of this; our files are now ready to be committed to Git.  We'll commit them now:
+%pre
+  %code
+    :preserve
+      $ git commit -m 'this is the first commit'
+%pre
+  %code
+    :preserve
+      $ git status
+      On branch master
+      nothing to commit, working directory clean
+%p Git will now remember the exact state and content of all of the files in the workspace, at the point they were committed, for ever more.  The significance of this cannot be overstated.
+%p Time for another tool.  We're going to use a tool called Bundler to manage the application's dependencies (e.g. Sinatra is a dependency).  To use Bundler, we need to initialize it first.  Again, ensure you are in the workspace folder then enter:
+%pre
+  %code
+    :preserve
+      $ bundle init
+%p
+  Note: the tool is Bundler, but the command is
+  = succeed "." do
+    %code bundle
+%p
+  You should see a new file has been created called
+  = succeed "." do
+    %code Gemfile
+.highlight.highlight-source-ruby
+  %pre
+    source
+    %span.pl-s
+      %span.pl-pds> "
+      https://rubygems.org
+      %span.pl-pds "
+    %span.pl-k gem
+    %span.pl-s
+      %span.pl-pds> '
+      sinatra
+      %span.pl-pds '
+%p Now run bundler:
+%pre
+  %code
+    :preserve
+      $ bundle
+%p
+  This should create another new file called
+  = succeed "." do
+    %code Gemfile.lock
+%p
+  Now create one more file in your workspace called
+  %code config.ru
+  with the following content:
+.highlight.highlight-source-ruby
+  %pre
+    %span.pl-k require
+    %span.pl-s
+      %span.pl-pds> '
+      \./server
+      %span.pl-pds '
+    run
+    = succeed "::" do
+      %span.pl-c1 Sinatra
+    %span.pl-c1 Application
+%p Your files should look like this:
+%p
+  %a{:href => "/images/step_9/final_file_tree.png", :target => "_blank"}
+    %img{:alt => "final file tree", :src => "/images/step_9/final_file_tree.png", :style => "max-width:100%;"}/
+%p Don't worry if this all seems a bit baffling.  It's mostly just configuration, which we tend to do once then forget about.  Lets add our changes to Git.  Check first that they are pending:
+%pre
+  %code
+    :preserve
+      $ git status
+      On branch master
+      Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+      
+              Gemfile
+              Gemfile.lock
+              config.ru
+      
+      nothing added to commit but untracked files present (use "git add" to track)
+%p Let's add and commit these:
+%pre
+  %code
+    :preserve
+      $ git add .
+      $ git commit -m 'adds Bundler and Rack config files'
+%p Git will now remember the exact state and content of all the files at both points in time:  this current commit and the one we did before.  Over the course of a project there could be hundreds, even thousands of commits; each one representing a precise point in time that Git can go back to and compare - it will remember every single one.  And that's just the tip of the iceberg.
+%pre
+  %code
+    :preserve
+      $ git status
+      On branch master
+      nothing to commit, working directory clean
+%h2
+  %a#user-content-deploy-to-heroku.anchor{"aria-hidden" => "true", :href => "#deploy-to-heroku"}>
+    %span.octicon.octicon-link
+  Deploy to Heroku
+%p
+  We are going to deploy our application to
+  = succeed "." do
+    %a{:href => "http://heroku.com"} Heroku
+  %a{:href => "http://heroku.com"} Heroku
+  and register for a new account. Note your email and password, you'll need it in a second.
+%p
+  Heroku provides a suite of tools for interacting with it from the command line, called the
+  = succeed "." do
+    %a{:href => "https://toolbelt.heroku.com/"} Heroku Toolbelt
+%pre
+  %code
+    :preserve
+      $ heroku --version
+%p You should see something like:
+%pre
+  %code
+    :preserve
+      heroku-toolbelt/3.42.15 (x86_64-linux) ruby/2.2.1
+%p You can do a lot of interaction with Heroku from the Heroku website, but it's more fun to do it from the command line.  First we need to hook up to our account:
+%pre
+  %code
+    :preserve
+      $ heroku login
+%p This will prompt you for the email and password you used to create your Heroku account.  Once you are logged in, you can create a new application:
+%pre
+  %code
+    :preserve
+      $ heroku create
+%p
+  If you check back on the Heroku website, you should see your application has been created.  You can even visit your new application in a browser by following its unique url (
+  %code http://[YOUR APP NAME].herokuapp.com
+  ):
+%p
+  %a{:href => "/images/step_9/heroku_app_initial.png", :target => "_blank"}
+    %img{:alt => "Heroku application", :src => "/images/step_9/heroku_app_initial.png", :style => "max-width:100%;"}/
+%p Finally, we will use Git to push our application source code to Heroku and Heroku will do the rest:
+%pre
+  %code
+    :preserve
+      $ git push heroku master
+%p Visit your application's URL again and it should be fully up and running!
+%p In the final step, we'll add a 'Tweet' button so that you can share your website with its current image and caption selections.
+%p
+  %a{:href => "/steps/8.md"} Previous step
+  |
+  %a{:href => "/steps/10.md"} Continue to Step 10
