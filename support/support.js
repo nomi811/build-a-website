@@ -9,7 +9,7 @@ var findImagesOnGoogle = (function() {
 
   return function(options) {
     data.q = options.term;
-    $.get(searchUrl, data, createSearchCompleteCallback(options.resultsContainer))
+    $.get(searchUrl, data, createSearchCompleteCallback(options.resultsContainer));
   }
 })();
 
